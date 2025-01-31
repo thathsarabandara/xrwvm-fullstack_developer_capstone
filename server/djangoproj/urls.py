@@ -34,5 +34,5 @@ urlpatterns = [
 
     path('postreview/<int:dealer_id>',
          TemplateView.as_view(template_name="index.html")),
-         
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

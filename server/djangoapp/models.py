@@ -22,7 +22,7 @@ class CarModel(models.Model):
         ("SUV", "SUV"),
         ("WAGON", "Wagon"),
     ]
-    
+
     type = models.CharField(max_length=10, choices=CAR_TYPES)
     year = models.IntegerField(
         default=2023,
