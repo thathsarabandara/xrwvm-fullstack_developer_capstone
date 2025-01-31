@@ -11,6 +11,7 @@ from .populate import initiate
 
 logger = logging.getLogger(__name__)
 
+
 @csrf_exempt
 def login_user(request):
     # Get username and password from request.POST dictionary
