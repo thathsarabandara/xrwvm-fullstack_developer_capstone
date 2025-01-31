@@ -14,8 +14,8 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 
 # Create a `login_request` view to handle sign in request
-@csrf_exempt
 
+@csrf_exempt
 def login_user(request):
     # Get username and password from request.POST dictionary
     data = json.loads(request.body)
@@ -61,7 +61,9 @@ def registration(request):
         # Create user in auth_user table
         user = User.objects.create_user(username=username,
                                         first_name=first_name,
-                                        last_name=last_name, password=password, email=email)
+                                        last_name=last_name,
+                                        password=password,
+                                        email=email)
         # Login the user and redirect to list page
         login(request, user)
         data = {"userName": username, "status": "Authenticated"}
@@ -77,9 +79,9 @@ def get_cars(request):
     if count == 0:
         initiate()
     car_models = CarModel.objects.select_related('car_make')
-    cars = [{"CarModel": car_model.name, 
-             "CarMake": car_model.car_make.name
-            } for car_model in car_models]
+    cars = [{"CarModel": car_model.name,
+             "CarMake": car_model.car_make.name}
+             for car_model in car_models]
     return JsonResponse({"CarModels": cars})
 
 
